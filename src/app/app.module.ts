@@ -5,11 +5,14 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { StartButtonComponent } from './Components/start-button/start-button.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
 
 const routes: Routes = [{ path: "", component: HomeComponent }];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, NavbarComponent, StartButtonComponent, ConfigurationComponent],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],
