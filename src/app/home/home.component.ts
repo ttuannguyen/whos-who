@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   configLoading: boolean = false;
   token: String = "";
   previewUrl: any;
+  gameStarted: boolean = false;
 
   ngOnInit(): void {
     this.authLoading = true;
@@ -75,6 +76,9 @@ export class HomeComponent implements OnInit {
     this.configLoading = false;
   };
 
+  items: string[] = []
+  
+
   setGenre(selectedGenre: any) {
     this.selectedGenre = selectedGenre;
     console.log(this.selectedGenre);
@@ -82,6 +86,8 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit = async () => {
+    this.items = []
+    this.gameStarted = true;
     const response = await fetchFromSpotify({
       token: this.token,
       endpoint: "search",
@@ -99,6 +105,13 @@ export class HomeComponent implements OnInit {
     console.log(randomInt)
     let track = response.tracks.items[randomInt];
 
+    while(this.items.length < 3){
+      randomInt = Math.floor(Math.random() * response.tracks.limit);
+      let trackName = response.tracks.items[randomInt].name;
+      let artistName = response.tracks.items[randomInt].artists[0].name;
+      this.items.push(`${artistName} - ${trackName}`);
+    }
+
     if (track) {
       this.previewUrl = track.preview_url;
       while(this.previewUrl == "" || this.previewUrl == null){
@@ -108,7 +121,7 @@ export class HomeComponent implements OnInit {
 
       console.log(this.previewUrl);
       console.log(track.artists[0].name + " - " + track.name)
-      const artistName = track.artists[0].name
+      this.items.push(`${track.artists[0].name} - ${track.name}`)
     } else {
       console.log("No tracks found");
     }

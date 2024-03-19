@@ -13,6 +13,10 @@ export class GameComponent implements OnChanges {
 
     @Input() previewUrl: string = '';
     song: Howl | undefined;
+    gameOver: boolean = false;
+    @Input() items:string [] = []
+    points: number = 0
+    @Input() sub: any
 
     constructor() {}
 
@@ -42,6 +46,22 @@ export class GameComponent implements OnChanges {
         if (this.song) {
             this.song.pause();
         }
+    }
+
+    check(event: any): void {
+        let answer = event.target.innerHTML;
+        if(answer ===this.items[3]) {
+            console.log('correct');
+            this.points += 500
+        }
+        else {
+            console.log('wrong')
+        }
+        this.sub()
+    }
+
+    endGame() {
+        this.gameOver = true;
     }
 }
 
