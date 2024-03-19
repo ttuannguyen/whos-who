@@ -10,11 +10,12 @@ import { StartButtonComponent } from './Components/start-button/start-button.com
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LeaderboardComponent } from './Components/leaderboard/leaderboard.component';
+import { GameOverComponent } from './Components/game-over/game-over.component';
 
 const routes: Routes = [{ path: "", component: HomeComponent }];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavbarComponent, StartButtonComponent, ConfigurationComponent, LeaderboardComponent],
+  declarations: [AppComponent, HomeComponent, NavbarComponent, StartButtonComponent, ConfigurationComponent, LeaderboardComponent, GameOverComponent],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
