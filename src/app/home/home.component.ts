@@ -88,17 +88,27 @@ export class HomeComponent implements OnInit {
       params: {
         q: `genre:${this.selectedGenre}`, 
         type: 'track',
-        limit: 10, 
+        limit: 50,
         market: 'US' 
       }
     });
 
     console.log(response)
 
-    const firstTrack = response.tracks.items[0];
-    if (firstTrack) {
-      this.previewUrl = firstTrack.preview_url || "";
+    let randomInt = Math.floor(Math.random() * response.tracks.limit);
+    console.log(randomInt)
+    let track = response.tracks.items[randomInt];
+
+    if (track) {
+      this.previewUrl = track.preview_url;
+      while(this.previewUrl == "" || this.previewUrl == null){
+        track = response.tracks.items[randomInt + 1]
+        this.previewUrl = track.preview_url;
+      }
+
       console.log(this.previewUrl);
+      console.log(track.artists[0].name + " - " + track.name)
+      const artistName = track.artists[0].name
     } else {
       console.log("No tracks found");
     }
