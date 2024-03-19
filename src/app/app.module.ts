@@ -11,11 +11,12 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { AppRoutingModule } from './app-routing.module';
 import { LeaderboardComponent } from './Components/leaderboard/leaderboard.component';
 import { GameOverComponent } from './Components/game-over/game-over.component';
+import { GameComponent } from './Components/game/game.component';
 
 const routes: Routes = [{ path: "", component: HomeComponent }];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavbarComponent, StartButtonComponent, ConfigurationComponent, LeaderboardComponent, GameOverComponent],
+  declarations: [AppComponent, HomeComponent, NavbarComponent, StartButtonComponent, ConfigurationComponent, LeaderboardComponent, GameOverComponent, GameComponent],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
