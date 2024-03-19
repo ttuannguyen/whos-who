@@ -8,12 +8,13 @@ import { HomeComponent } from "./home/home.component";
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { StartButtonComponent } from './Components/start-button/start-button.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { AppRoutingModule } from './app-routing.module';
 
 const routes: Routes = [{ path: "", component: HomeComponent }];
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NavbarComponent, StartButtonComponent, ConfigurationComponent],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
