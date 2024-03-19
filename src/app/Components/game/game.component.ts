@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+// import {Component, Input, OnInit} from '@angular/core';
 import {Howl, Howler} from 'howler';
-
-
 
 
 @Component({
@@ -9,25 +8,40 @@ import {Howl, Howler} from 'howler';
     templateUrl: './game.component.html',
     styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit {
 
-    constructor() {
+export class GameComponent implements OnChanges {
+
+    @Input() previewUrl: string = '';
+    song: Howl | undefined;
+
+    constructor() {}
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['previewUrl'] && this.previewUrl) {
+            console.log(this.previewUrl);
+            this.loadAudio();
+        }
     }
 
-    song = new Howl({
-        src: ['https://p.scdn.co/mp3-preview/15e1178c9eb7f626ac1112ad8f56eccbec2cd6e5?cid=85b2344ba4a14b1fafeb1aa2a6cbad04'],
-        html5: true,
-    })
-
-    ngOnInit(): void {
-
+    loadAudio(): void {
+        if (this.previewUrl) {
+            this.song = new Howl({
+                src: [this.previewUrl],
+                html5: true,
+            });
+        }
     }
 
-    play() {
-        this.song.play();
+    play(): void {
+        if (this.song) {
+            this.song.play();
+        }
     }
 
-    pause() {
-        this.song.pause();
+    pause(): void {
+        if (this.song) {
+            this.song.pause();
+        }
     }
 }
+

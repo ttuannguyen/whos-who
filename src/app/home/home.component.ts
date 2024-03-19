@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   authLoading: boolean = false;
   configLoading: boolean = false;
   token: String = "";
+  previewUrl: any;
 
   ngOnInit(): void {
     this.authLoading = true;
@@ -79,4 +80,32 @@ export class HomeComponent implements OnInit {
     console.log(this.selectedGenre);
     console.log(TOKEN_KEY);
   }
+
+  onSubmit = async () => {
+    const response = await fetchFromSpotify({
+      token: this.token,
+      endpoint: "search",
+      params: {
+        q: `genre:${this.selectedGenre}`, 
+        type: 'track',
+        limit: 10, 
+        market: 'US' 
+      }
+    });
+
+    console.log(response)
+
+    const firstTrack = response.tracks.items[0];
+    if (firstTrack) {
+      this.previewUrl = firstTrack.preview_url || "";
+      console.log(this.previewUrl);
+    } else {
+      console.log("No tracks found");
+    }
+
+    console.log(this.previewUrl)
+
+
+  }
+
 }

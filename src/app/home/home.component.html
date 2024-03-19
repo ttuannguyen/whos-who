@@ -8,6 +8,6 @@
     </option>
   </select>
 </div>
-<app-start-button></app-start-button>
+<app-start-button (click)="onSubmit()"></app-start-button>
 <app-game-over></app-game-over>
-<app-game></app-game>
+<app-game [previewUrl]="previewUrl"></app-game>
