@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Howl, Howler} from 'howler';
+import {ConfigService} from "../../config.service";
 
 
 @Component({
@@ -13,11 +14,14 @@ export class GameComponent implements OnChanges {
     @Input() previewUrl: string = '';
     song: Howl | undefined;
     gameOver: boolean = false;
-    @Input() items:string [] = []
+    @Input() items: string [] = []
     points: number = 0
     @Input() sub: any
+    wrongGuesses = 0
 
-    constructor() {}
+
+    constructor(private configService: ConfigService) {
+    }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['previewUrl'] && this.previewUrl) {
@@ -39,6 +43,7 @@ export class GameComponent implements OnChanges {
         if (this.song) {
             this.song.play();
         }
+
     }
 
     pause(): void {
@@ -47,19 +52,28 @@ export class GameComponent implements OnChanges {
         }
     }
 
-    check(event: any): void {
-        let answer = event.target.innerHTML;
-        if(answer ===this.items[3]) {
-            console.log('correct');
-            this.points += 500
+    stopSong() {
+        if (this.song) {
+            this.song.stop();
         }
-        else {
-            console.log('wrong')
+    }
+
+    check(event: any): void {
+        this.stopSong();
+        let answer = event.target.innerHTML;
+        if (answer === this.items[3]) {
+            this.points += 500
+        } else {
+            this.wrongGuesses++;
+            if (this.configService.mode === 'hard' && this.wrongGuesses === 3) {
+                this.endGame()
+            }
         }
         this.sub()
     }
 
     endGame() {
+        this.stopSong();
         this.gameOver = true;
     }
 }
