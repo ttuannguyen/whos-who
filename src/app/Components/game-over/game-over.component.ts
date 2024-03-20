@@ -8,7 +8,7 @@ import { ConfigService } from 'src/app/config.service';
 })
 export class GameOverComponent implements OnInit {
 
-  name = 'Rickey'
+
   @Input() score: number|any
   constructor(public configService: ConfigService) { }
 
