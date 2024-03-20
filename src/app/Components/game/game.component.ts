@@ -16,7 +16,7 @@ export class GameComponent implements OnChanges {
     gameOver: boolean = false;
     @Input() items: string [] = []
     points: number = 0
-    @Input() sub: any
+    @Input() getNextSong: any
     wrongGuesses = 0
 
 
@@ -69,7 +69,7 @@ export class GameComponent implements OnChanges {
                 this.endGame()
             }
         }
-        this.sub()
+        this.getNextSong()
     }
 
     endGame() {
