@@ -20,7 +20,7 @@ export class GameComponent implements OnChanges {
     wrongGuesses = 0
 
 
-    constructor(private configService: ConfigService) {
+    constructor(protected configService: ConfigService) {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
