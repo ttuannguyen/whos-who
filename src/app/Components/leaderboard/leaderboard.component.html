@@ -1,6 +1,20 @@
 <div class="leaderboard-container">
-    <h2>{{configService.mode | titlecase}} Leaderboard</h2>
-    <div *ngFor="let leader of leaders; index as i">
-        <div>{{ i + 1 }} | {{ leader.name }} | {{ leader.score }}</div>
-    </div>
+    <h2>{{ configService.mode | titlecase }} Leaderboard</h2>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">position</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let leader of leaders; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ leader.name }}</td>
+            <td>{{ leader.score }}</td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
