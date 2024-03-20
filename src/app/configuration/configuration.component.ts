@@ -28,8 +28,8 @@ export class ConfigurationComponent implements OnInit {
   }
 
   onSubmit = async () => {
-    // console.log(this.configService.name);
-    // console.log(this.configService.mode);
+    console.log(this.configService.name);
+    console.log(this.configService.mode);
     this.router.navigate(["/"]);
   }
 

@@ -1,19 +1,20 @@
 <div class="config-container">
     <form>
         <div class="form-group row"></div>
-            <label class="col-sm-2 col-form-label">Name</label>
+            
+            <h4>Name</h4>
             <div class="col-sm-10">
-                <input [(ngModel)]="name" (ngModelChange)="setName($event)" style="width: 220px; height: 30px">
+                <input [(ngModel)]="name" name="name" (ngModelChange)="setName($event)" style="width: 220px; height: 30px">
             </div>
             
-            <label class="col-sm-2 col-form-label">Mode</label>
+            <h4 class="mode">Mode</h4>
             <div class="col-sm-10">
-                <select [(ngModel)]="mode" (ngModelChange)="setMode($event)" class="form-group mb-2" style="width: 220px; height: 30px">
+                <select [(ngModel)]="mode" (ngModelChange)="setMode($event)" name="mode" class="form-group mb-2" style="width: 220px; height: 30px">
                     <option value="easy">easy</option>
                     <option value="hard">hard</option>
                 </select>
         </div>
-        <button (click)="onSubmit()" class="btn btn-dark" style="margin-top: 20px">Submit</button>
+        <button type="button" (click)="onSubmit()" class="btn btn-dark" style="margin-top: 20px">Submit</button>
     </form>   
 </div>
 
