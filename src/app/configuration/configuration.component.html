@@ -1,13 +1,19 @@
-<div>
-    Name:
-    <input [(ngModel)]="name" (ngModelChange)="setName($event)" />
-    Mode:
-    <select [(ngModel)]="mode" (ngModelChange)="setMode($event)">
-        <option value="easy">easy</option>
-        <option value="hard">hard</option>
-    </select>
-    <br />
-    <button (click)="onSubmit()">Submit</button>
-    
+<div class="config-container">
+    <form>
+        <div class="form-group row"></div>
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="name" (ngModelChange)="setName($event)" style="width: 220px; height: 30px">
+            </div>
+            
+            <label class="col-sm-2 col-form-label">Mode</label>
+            <div class="col-sm-10">
+                <select [(ngModel)]="mode" (ngModelChange)="setMode($event)" class="form-group mb-2" style="width: 220px; height: 30px">
+                    <option value="easy">easy</option>
+                    <option value="hard">hard</option>
+                </select>
+        </div>
+        <button (click)="onSubmit()" class="btn btn-dark" style="margin-top: 20px">Submit</button>
+    </form>   
 </div>
 

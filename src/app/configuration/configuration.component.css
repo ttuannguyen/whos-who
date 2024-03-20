@@ -1,0 +1,7 @@
+.config-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    align-items: center;   
+    text-align: center;
+}
