@@ -22,8 +22,10 @@ export class LeaderboardComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.leaders = JSON.parse(localStorage.getItem(this.configService.mode + "Leaderboard" ) || '[]')
         this.leaders.push({name: this.playerName, score: this.playerScore})
         this.sortLeaderboard(this.leaders)
+        this.saveLeaderboard(this.leaders, this.configService.mode)
     }
 
 
@@ -38,6 +40,10 @@ export class LeaderboardComponent implements OnInit {
             else
                 return 0
         })
+    }
+
+    saveLeaderboard(leaderboard:Player[], mode:string) {
+        localStorage.setItem(mode + "Leaderboard", JSON.stringify(leaderboard))
     }
 
 
