@@ -2,4 +2,4 @@
     <p>Good Game {{ configService.name }}!!!</p>
     <p>Your score was {{score}}</p>
 </div>
-<app-leaderboard></app-leaderboard>
+<app-leaderboard [playerName]="configService.name" [playerScore]="score"></app-leaderboard>
