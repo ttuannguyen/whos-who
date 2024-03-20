@@ -1,5 +1,4 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-// import {Component, Input, OnInit} from '@angular/core';
 import {Howl, Howler} from 'howler';
 
 

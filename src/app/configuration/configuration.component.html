@@ -1,1 +1,13 @@
-<p>configuration works!</p>
+<div (click)="onSubmit()">
+    Name:
+    <input [(ngModel)]="name" (ngModel)="setName($event)" />
+    Mode:
+    <select [(ngModel)]="mode" (ngModel)="setMode($event)">
+        <option value="easy">easy</option>
+        <option value="hard">hard</option>
+    </select>
+    <br />
+    <button>Submit</button>
+    
+</div>
+

@@ -92,7 +92,6 @@ export class HomeComponent implements OnInit {
         market: 'US' 
       }
     });
-
     console.log(response)
 
     let randomInt = Math.floor(Math.random() * response.tracks.limit);
@@ -105,16 +104,11 @@ export class HomeComponent implements OnInit {
         track = response.tracks.items[randomInt + 1]
         this.previewUrl = track.preview_url;
       }
-
-      console.log(this.previewUrl);
       console.log(track.artists[0].name + " - " + track.name)
       const artistName = track.artists[0].name
     } else {
       console.log("No tracks found");
     }
-
-    console.log(this.previewUrl)
-
 
   }
 
