@@ -40,18 +40,18 @@ export class GameComponent implements OnChanges {
         }
     }
 
-    play(): void {
-        if (this.song) {
-            this.song.play();
-        }
-
-    }
-
-    pause(): void {
-        if (this.song) {
-            this.song.pause();
-        }
-    }
+    // play(): void {
+    //     if (this.song) {
+    //         this.song.play();
+    //     }
+    //
+    // }
+    //
+    // pause(): void {
+    //     if (this.song) {
+    //         this.song.pause();
+    //     }
+    // }
 
     stopSong() {
         if (this.song) {
@@ -60,7 +60,7 @@ export class GameComponent implements OnChanges {
     }
 
     check(event: any): void {
-        this.stopSong();
+        // this.stopSong();
         let answer = event.target.innerHTML;
         if (answer === this.correctAnswer) {
             this.points += 500
@@ -74,7 +74,7 @@ export class GameComponent implements OnChanges {
     }
 
     endGame() {
-        this.stopSong();
+        // this.stopSong();
         this.gameOver = true;
     }
 }

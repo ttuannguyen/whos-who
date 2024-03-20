@@ -3,9 +3,10 @@
     <div *ngIf="this.configService.mode ==='hard'">
         <p>Wrong Guesses: {{ wrongGuesses }}/3</p>
     </div>
-
-    <button (click)="play()">Play</button>
-    <button (click)="pause()">Pause</button>
+    <audio controls src="{{previewUrl}}">
+    </audio>
+<!--    <button (click)="play()">Play</button>-->
+<!--    <button (click)="pause()">Pause</button>-->
     <div *ngFor="let item of items">
         <button (click)="check($event)">{{ item }}</button>
     </div>
