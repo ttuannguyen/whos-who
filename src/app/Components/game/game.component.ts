@@ -18,7 +18,7 @@ export class GameComponent implements OnChanges {
     points: number = 0
     @Input() getNextSong: any
     wrongGuesses = 0
-    @Input() correctAnswer!: string;
+    @Input() correctAnswer: string = '';
 
 
     constructor(protected configService: ConfigService) {

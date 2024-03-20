@@ -1,19 +1,24 @@
 <div *ngIf="authLoading || configLoading">Loading...</div>
-<div *ngIf="!authLoading && !configLoading">
-  <div class="home">
-    <h3 *ngIf="!configService.name">Welcome!</h3>
-    <h3 *ngIf="configService.name" class="player-name">Player: {{ configService.name }}</h3>
-    <h3 *ngIf="configService.mode">Mode: {{ configService.mode }}</h3>
-    Genre:
-    <select [(ngModel)]="selectedGenre" (ngModelChange)="setGenre($event)">
-      <option [value]=""></option>
-      <option [value]="genre" *ngFor="let genre of genres">
-        {{ genre }}
-      </option>
-    </select>
-    <app-start-button (click)="onSubmit()" style="margin-top: 10px;"></app-start-button>
-  </div>
+<div *ngIf="!gameStarted; else start">
+    <div *ngIf="!authLoading && !configLoading">
+        <div class="home">
+            <h3 *ngIf="!configService.name">Welcome!</h3>
+            <h3 *ngIf="configService.name" class="player-name">Player: {{ configService.name }}</h3>
+            <h3 *ngIf="configService.mode">Mode: {{ configService.mode }}</h3>
+            Genre:
+            <select [(ngModel)]="selectedGenre" (ngModelChange)="setGenre($event)">
+                <option [value]=""></option>
+                <option [value]="genre" *ngFor="let genre of genres">
+                    {{ genre }}
+                </option>
+            </select>
+            <app-start-button (click)="onSubmit()" style="margin-top: 10px;"></app-start-button>
+        </div>
+    </div>
 </div>
 
-<app-game-over></app-game-over>
-<app-game [previewUrl]="previewUrl"></app-game>
+<!--<app-game-over></app-game-over>-->
+<ng-template #start>
+    <app-game [previewUrl]="previewUrl" [items]="items" [getNextSong]="onSubmit"
+              [correctAnswer]='songAndArtist'></app-game>
+</ng-template>
