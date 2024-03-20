@@ -18,7 +18,7 @@ export class LeaderboardComponent implements OnInit {
     @Input() playerName: string = ''
     @Input() playerScore: number = 0
 
-    constructor(private configService: ConfigService) {
+    constructor(protected configService: ConfigService) {
     }
 
     ngOnInit(): void {

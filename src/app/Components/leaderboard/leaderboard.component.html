@@ -1,5 +1,5 @@
 <div class="leaderboard-container">
-    <h2>Leaderboard</h2>
+    <h2>{{configService.mode | titlecase}} Leaderboard</h2>
     <div *ngFor="let leader of leaders; index as i">
         <div>{{ i + 1 }} | {{ leader.name }} | {{ leader.score }}</div>
     </div>
