@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import fetchFromSpotify, { request } from "../../services/api";
 import { ConfigService } from "../config.service";
 
+
 const AUTH_ENDPOINT =
   "https://nuod0t2zoe.execute-api.us-east-2.amazonaws.com/FT-Classroom/spotify-auth-token";
 const TOKEN_KEY = "whos-who-access-token";
@@ -123,6 +124,7 @@ export class HomeComponent implements OnInit {
     } else {
       console.log("No tracks found");
     }
+    this.items.sort(() => Math.random() - 0.5);
 
   }
 
