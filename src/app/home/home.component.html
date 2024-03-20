@@ -1,4 +1,6 @@
 <div *ngIf="authLoading || configLoading">Loading...</div>
+<h3>Hi, {{ configService.name }}!</h3>
+<h3>Mode: {{ configService.mode }}</h3>
 <div *ngIf="!authLoading && !configLoading">
   Genre:
   <select [(ngModel)]="selectedGenre" (ngModelChange)="setGenre($event)">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '../config.service';
 
 @Component({
   selector: 'app-configuration',
@@ -10,23 +11,24 @@ export class ConfigurationComponent implements OnInit {
   name: string = ""
   mode: string = ""
   
-  constructor() { }
+  constructor(private configService: ConfigService) { }
+
+  setName(name: string) {
+    this.name = name;
+    this.configService.name = name;
+  }
+
+  setMode(mode: string) {
+    this.mode = mode;
+    this.configService.mode = mode;
+  }
 
   ngOnInit(): void {
   }
 
-  setName(name: any) {
-    this.name = name;
-  }
-
-  setMode(mode: any) {
-    this.mode = mode;
-  }
-
   onSubmit = async () => {
-    
-    console.log(this.name);
-    console.log(this.mode)
+    console.log(this.configService.name);
+    console.log(this.configService.mode)
   }
 
 }

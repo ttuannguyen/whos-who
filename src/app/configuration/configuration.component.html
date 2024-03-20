@@ -1,8 +1,8 @@
 <div (click)="onSubmit()">
     Name:
-    <input [(ngModel)]="name" (ngModel)="setName($event)" />
+    <input [(ngModel)]="name" (ngModelChange)="setName($event)" />
     Mode:
-    <select [(ngModel)]="mode" (ngModel)="setMode($event)">
+    <select [(ngModel)]="mode" (ngModelChange)="setMode($event)">
         <option value="easy">easy</option>
         <option value="hard">hard</option>
     </select>
