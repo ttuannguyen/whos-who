@@ -1,5 +1,5 @@
 <div>
-    <p>Good Game {{ configService.name | titlecase}}!!!</p>
-    <p>Your score was {{score}}</p>
+    <h3>Good Game {{ configService.name | titlecase}}!!!</h3>
+    <h4>Score: {{score}}</h4>
 </div>
 <app-leaderboard [playerName]="configService.name" [playerScore]="score"></app-leaderboard>
