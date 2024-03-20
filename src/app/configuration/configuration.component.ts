@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../config.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuration',
@@ -11,7 +12,7 @@ export class ConfigurationComponent implements OnInit {
   name: string = ""
   mode: string = ""
   
-  constructor(private configService: ConfigService) { }
+  constructor(private router: Router, private configService: ConfigService) { }
 
   setName(name: string) {
     this.name = name;
@@ -27,8 +28,9 @@ export class ConfigurationComponent implements OnInit {
   }
 
   onSubmit = async () => {
-    console.log(this.configService.name);
-    console.log(this.configService.mode)
+    // console.log(this.configService.name);
+    // console.log(this.configService.mode);
+    this.router.navigate(["/"]);
   }
 
 }
