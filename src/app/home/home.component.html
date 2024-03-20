@@ -14,5 +14,5 @@
     <app-start-button (click)="onSubmit()"></app-start-button>
 </div>
 <ng-template #start>
-    <app-game [previewUrl]="previewUrl" [items]="items" [getNextSong]="onSubmit"></app-game>
+    <app-game [previewUrl]="previewUrl" [items]="items" [getNextSong]="onSubmit" [correctAnswer] = 'songAndArtist'></app-game>
 </ng-template>

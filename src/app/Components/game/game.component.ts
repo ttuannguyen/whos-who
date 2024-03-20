@@ -18,6 +18,7 @@ export class GameComponent implements OnChanges {
     points: number = 0
     @Input() getNextSong: any
     wrongGuesses = 0
+    @Input() correctAnswer!: string;
 
 
     constructor(protected configService: ConfigService) {
@@ -61,7 +62,7 @@ export class GameComponent implements OnChanges {
     check(event: any): void {
         this.stopSong();
         let answer = event.target.innerHTML;
-        if (answer === this.items[3]) {
+        if (answer === this.correctAnswer) {
             this.points += 500
         } else {
             this.wrongGuesses++;
