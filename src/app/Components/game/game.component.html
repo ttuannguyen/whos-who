@@ -1,2 +1,12 @@
-<button (click)="play()">Play</button>
-<button (click)="pause()">Pause</button>
+<div *ngIf="!gameOver; else gameOverComponent">
+    <p>score: {{ points }}</p>
+    <button (click)="play()">Play</button>
+    <button (click)="pause()">Pause</button>
+    <div *ngFor="let item of items">
+        <button (click)="check($event)">{{ item }}</button>
+    </div>
+    <button (click)="endGame()">End Game</button>
+</div>
+<ng-template #gameOverComponent>
+    <app-game-over [score]=points></app-game-over>
+</ng-template>

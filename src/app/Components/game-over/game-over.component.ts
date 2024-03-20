@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-game-over',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class GameOverComponent implements OnInit {
 
   name = 'Rickey'
-  score = 100
+  @Input() score: number|any
   constructor() { }
 
   ngOnInit(): void {
