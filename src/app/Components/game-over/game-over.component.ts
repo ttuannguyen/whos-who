@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { ConfigService } from 'src/app/config.service';
 
 @Component({
   selector: 'app-game-over',
@@ -9,7 +10,7 @@ export class GameOverComponent implements OnInit {
 
   name = 'Rickey'
   @Input() score: number|any
-  constructor() { }
+  constructor(public configService: ConfigService) { }
 
   ngOnInit(): void {
   }
