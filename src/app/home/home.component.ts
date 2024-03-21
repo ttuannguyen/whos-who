@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit {
     token: String = "";
     previewUrl: any;
     gameStarted: boolean = false;
-    songAndArtist: string = ''
+    songAndArtist: string = '';
+    errorMessage: string ='';
 
     ngOnInit(): void {
         this.authLoading = true;
@@ -90,6 +91,17 @@ export class HomeComponent implements OnInit {
     }
 
     onSubmit = async () => {
+        
+        if (this.configService.name === '') {
+            this.errorMessage = "Please register in Configuration to start playing!"
+            return;
+        } 
+
+        if (this.selectedGenre === '') {
+            this.errorMessage = "Please select a genre to start playing!"
+            return;
+        } 
+
         this.items = []
         this.songAndArtist = ''
         this.gameStarted = true;
