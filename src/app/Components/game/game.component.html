@@ -1,5 +1,5 @@
-<div *ngIf="!gameOver; else gameOverComponent">
-    <p>score: {{ points }}</p>
+<div *ngIf="!gameOver; else gameOverComponent" class="game-container">
+    <h4 style="margin-top: 20px;">score: {{ points }}</h4>
     <div *ngIf="this.configService.mode ==='hard'">
         <p>Wrong Guesses: {{ wrongGuesses }}/3</p>
     </div>
@@ -8,9 +8,11 @@
 <!--    <button (click)="play()">Play</button>-->
 <!--    <button (click)="pause()">Pause</button>-->
     <div *ngFor="let item of items">
-        <button (click)="check($event)">{{ item }}</button>
+        <div (click)="check($event)" class="card" style="width: 200px; height: 100px; margin-top: 20px;">
+            {{ item }}
+        </div>
     </div>
-    <button (click)="endGame()">End Game</button>
+    <button (click)="endGame()" class="btn btn-dark" style="margin-top: 30px">End Game</button>
 </div>
 <ng-template #gameOverComponent>
     <app-game-over [score]=points></app-game-over>

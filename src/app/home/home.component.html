@@ -2,9 +2,9 @@
 <div *ngIf="!gameStarted; else start">
     <div *ngIf="!authLoading && !configLoading">
         <div class="home">
-            <h3 *ngIf="!configService.name">Welcome!</h3>
+            <h3 *ngIf="!configService.name" style="margin-top: 40px">Welcome!</h3>
             <h3 *ngIf="configService.name" class="player-name">Player: {{ configService.name }}</h3>
-            <h3 *ngIf="configService.mode">Mode: {{ configService.mode }}</h3>
+            <h4 *ngIf="configService.mode">Mode: {{ configService.mode }}</h4>
             Genre:
             <select [(ngModel)]="selectedGenre" (ngModelChange)="setGenre($event)">
                 <option [value]=""></option>
