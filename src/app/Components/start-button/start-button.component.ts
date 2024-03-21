@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ConfigService} from "../../config.service";
 
 @Component({
   selector: 'app-start-button',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartButtonComponent implements OnInit {
 
-  constructor() { }
+  @Input() selectedGenre: String = ''
+  constructor(protected configService: ConfigService) { }
 
   ngOnInit(): void {
   }
