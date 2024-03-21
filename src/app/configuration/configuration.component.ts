@@ -12,7 +12,6 @@ export class ConfigurationComponent implements OnInit {
   name: string = ""
   mode: string = ""
   errorMessage: string = ""
-  nameExists: boolean = false;
   
   constructor(private router: Router, private configService: ConfigService) { }
 
@@ -28,30 +27,40 @@ export class ConfigurationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const existingNames: string[] = JSON.parse(localStorage.getItem("existingNames") || '[]');
-    this.nameExists = existingNames.includes(this.name);
+    
   }
 
   onSubmit = async () => {
-    // console.log(this.configService.name);
-    // console.log(this.configService.mode);
-
-    const existingNames: string[] = JSON.parse(localStorage.getItem("existingNames") || '[]');
-    if (existingNames.includes(this.name)) {
-      this.errorMessage = "Name has been taken!"
-      return;
-    }
-    else if(this.name === ''){
+  
+    if(this.name === ''){
       this.errorMessage = "Please enter a name"
       return;
     }
     else if(this.mode === ''){
       this.errorMessage = "Please select a mode"
       return;
-    }
-
-    existingNames.push(this.name);
-    localStorage.setItem('existingNames', JSON.stringify(existingNames));
+    }    
+    
+    const uniqueNameErrorMessage = "Name has been taken for this mode!"
+    if (this.mode === "easy") {
+      const existingNamesForEasyMode: string[] = JSON.parse(localStorage.getItem("existingNamesForEasyMode") || '[]');
+      if (existingNamesForEasyMode.includes(this.name)) {
+        this.errorMessage = uniqueNameErrorMessage;
+        return;
+      } else {
+        existingNamesForEasyMode.push(this.name);
+        localStorage.setItem('existingNamesForEasyMode', JSON.stringify(existingNamesForEasyMode));
+      }
+    } else {
+      const existingNamesForHardMode: string[] = JSON.parse(localStorage.getItem("existingNamesForHardMode") || '[]');
+      if (existingNamesForHardMode.includes(this.name)) {
+        this.errorMessage = uniqueNameErrorMessage;
+        return;
+      } else {
+        existingNamesForHardMode.push(this.name);
+        localStorage.setItem('existingNamesForHardMode', JSON.stringify(existingNamesForHardMode));
+      }
+    } 
 
     this.router.navigate(["/"]);
   }
