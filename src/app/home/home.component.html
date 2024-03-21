@@ -12,7 +12,9 @@
                     {{ genre }}
                 </option>
             </select>
-            <app-start-button (click)="onSubmit()" style="margin-top: 10px;"></app-start-button>
+<!--            <div *ngIf="configService.name !== ''">-->
+                <app-start-button [selectedGenre]="selectedGenre" (click)="onSubmit()" style="margin-top: 10px;" ></app-start-button>
+<!--            </div>-->
         </div>
     </div>
 </div>

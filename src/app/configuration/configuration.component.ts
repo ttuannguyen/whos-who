@@ -41,6 +41,14 @@ export class ConfigurationComponent implements OnInit {
       this.errorMessage = "Name has been taken!"
       return;
     }
+    else if(this.name === ''){
+      this.errorMessage = "Please enter a name"
+      return;
+    }
+    else if(this.mode === ''){
+      this.errorMessage = "Please select a mode"
+      return;
+    }
 
     existingNames.push(this.name);
     localStorage.setItem('existingNames', JSON.stringify(existingNames));
