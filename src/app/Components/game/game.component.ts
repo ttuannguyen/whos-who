@@ -60,7 +60,7 @@ export class GameComponent implements OnChanges {
     }
 
     check(event: any): void {
-        let answer = event.target.innerHTML;
+        let answer = event.target.innerText;
         console.log(answer)
         if (answer === this.correctAnswer) {
             this.points += 500
