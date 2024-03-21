@@ -1,5 +1,6 @@
 <div *ngIf="!gameOver; else gameOverComponent" class="game-container">
-    <h4 style="margin-top: 20px;">score: {{ points }}</h4>
+    <h4 style="margin-top: 20px;">score: {{ points }} </h4>
+    <!-- <h4 style="margin-top: 20px;">score: {{ points }}</h4> -->
     <div *ngIf="this.configService.mode ==='hard'">
         <p>Wrong Guesses: {{ wrongGuesses }}/3</p>
     </div>
