@@ -40,27 +40,23 @@ export class ConfigurationComponent implements OnInit {
       this.errorMessage = "Please select a mode"
       return;
     }    
-    
+
     const uniqueNameErrorMessage = "Name has been taken for this mode!"
+    let string = ""
     if (this.mode === "easy") {
-      const existingNamesForEasyMode: string[] = JSON.parse(localStorage.getItem("existingNamesForEasyMode") || '[]');
-      if (existingNamesForEasyMode.includes(this.name)) {
-        this.errorMessage = uniqueNameErrorMessage;
-        return;
-      } else {
-        existingNamesForEasyMode.push(this.name);
-        localStorage.setItem('existingNamesForEasyMode', JSON.stringify(existingNamesForEasyMode));
-      }
+      string = "namesForEasyMode"
     } else {
-      const existingNamesForHardMode: string[] = JSON.parse(localStorage.getItem("existingNamesForHardMode") || '[]');
-      if (existingNamesForHardMode.includes(this.name)) {
-        this.errorMessage = uniqueNameErrorMessage;
-        return;
-      } else {
-        existingNamesForHardMode.push(this.name);
-        localStorage.setItem('existingNamesForHardMode', JSON.stringify(existingNamesForHardMode));
-      }
-    } 
+      string = "namesForHardMode"
+    }
+      
+    const existingNames: string [] = JSON.parse(localStorage.getItem(string) || '[]');
+    if (existingNames.includes(this.name)) {
+      this.errorMessage = uniqueNameErrorMessage;
+      return;
+    } else {
+      existingNames.push(this.name)
+      localStorage.setItem(string, JSON.stringify(existingNames));
+    }
 
     this.router.navigate(["/"]);
   }
